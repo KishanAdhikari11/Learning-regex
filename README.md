@@ -43,4 +43,47 @@ To use regular expressions in your Python code, you need to import the `re` modu
 
 ```python
 import re
+```
+## Basic Patterns
+### Literal Characters
+A literal character or matching something literally refers to specfying an actual character in the text.
+### Example
+- 'a' is a literal character that matches lowercase letter 'a'.
+- '123' matches exact sequence of '1','2','3' in order.
+
+#### Code
+
+```python
+import re
+
+# Example: Matching the literal character 'cat'
+pattern = re.compile('cat')
+result = pattern.search('The cat is fast')
+print(result.group())  # Output: 'cat'
+```
+### Character Classes
+The character class in regex let us define a set of characters that we want to match. It is placed inside the big bracker [].
+### Example 
+- [cat] matches a literal 'cat'
+- [0-9]: It matches a range of number from 0 to 9.
+- [^0-9]: It matches a range of number other than 0 to 9.
+
+#### Code
+```
+import re
+# Example : usage of character class in regex
+patern=re.compile('[0-9]')
+pattern1=re.compile('[a-zA-Z0-9_]')
+res=pattern1.search('Hello') #output: H
+result=pattern.search('The number is 94')
+print(result.group()) #output: 9
+```
+
+
+
+
+
+
+
+
 
