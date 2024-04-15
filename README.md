@@ -25,6 +25,7 @@ This README.md file serves as a beginner-friendly guide to understanding and usi
 5. [Advanced Patterns](#advanced-patterns)
    - [Lookahead and Lookbehind](#lookahead-and-lookbehind)
    - [Backreferences](#backreferences)
+   - [Assertions](#assertions)
 6. [Common Use Cases](#common-use-cases)
    - [Email Validation](#email-validation)
    - [URL Matching](#url-matching)
@@ -125,6 +126,92 @@ result6 = pattern6.search('The year is 2022')
 print(result6.group())  # Output: '2022'
 
 ```
+
+## Special Characters
+
+### Anchors
+
+Anchors are special characters that allow you to specify positions within the text.
+
+| Anchor | Description                                                  |
+|--------|--------------------------------------------------------------|
+| `^`    | Matches the start of a string.                               |
+| `$`    | Matches the end of a string.                                 |
+| `\b`   | Matches a word boundary (the position between a word character and a non-word character). |
+| `\B`   | Matches a non-word boundary.   
+                        
+### Wildcard
+
+The wildcard `.` matches any single character except newline `\n`.
+
+| Wildcard | Description                                                  |                                            
+|----------|--------------------------------------------------------------|
+| `.`      | Matches any single character except newline `\n`.               
+
+### Escaping Special Characters
+
+To match a special character literally in a regex pattern, you need to escape it using a backslash `\`.
+
+| Character| Description                                                  |
+|--------|--------------------------------------------------------------|
+| `\`               | Escape character, used to escape special characters or create character classes. | Searching for a literal dot '.' in a string.                     |
+
+## Groups and Capturing
+
+## Groups and Capturing
+
+In regular expressions, groups and capturing are used to group multiple tokens together and capture specific parts of a matched pattern.
+
+### Capturing Groups
+
+Capturing groups are defined by enclosing part of a regex pattern in parentheses `( )`. They allow you to capture and extract specific parts of a matched pattern.
+
+For example, suppose you want to extract the area code from a phone number pattern. You can use capturing groups to isolate and extract the area code portion of the phone number.
+
+#### Usage:
+
+- Use capturing groups `( )` to extract specific parts of a matched pattern.
+
+#### Example:
+
+```python
+import re
+
+# Example: Using capturing groups to extract the area code from a phone number
+phone_number = "Phone number: (555) 123-4567"
+pattern = re.compile(r'\((\d{3})\) (\d{3}-\d{4})')
+match = pattern.search(phone_number)
+area_code = match.group(1)
+print(area_code)  # Output: '555'
+```
+
+### Non-Capturing Groups
+
+Non-capturing groups, denoted by `(?: )`, are used in regular expressions to group multiple tokens together without capturing the matched text. Unlike capturing groups, non-capturing groups do not create a separate capturing group in the match result.
+
+#### Usage:
+
+- Non-capturing groups are useful when you need to use parentheses for grouping but do not want to capture the matched text.
+
+#### Example:
+
+Suppose you have a string containing multiple fruits separated by commas, and you want to match each fruit individually but do not need to capture them separately.
+
+```python
+import re
+
+# Example: Using non-capturing groups to match fruits
+text = "apple, banana, orange"
+pattern = re.compile(r'(?:apple|banana|orange)')
+matches = pattern.findall(text)
+print(matches)  # Output: ['apple', 'banana', 'orange']
+```
+
+
+
+
+
+
 
 
 
